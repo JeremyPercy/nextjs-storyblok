@@ -1,70 +1,42 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react';
-import DynamicComponent from '../components/DynamicComponent'
-import { StoriesParams, StoryData } from 'storyblok-js-client';
-import styled from 'styled-components';
+import styled from 'styled-components'
+import Logo from '../public/assets/images/logo.png'
 
-const Title = styled.h1`
-font-size: 200px;
+
+const ContentWrapper = styled.main`
+width: 100vw;
+height: 100vh;
+display: grid;
+place-items: center;
 `
 
-interface Props {
-  story: StoryData
-}
+const LogoWrapper = styled.div`
+  width: 30%;
+  height: auto;
+`
 
-// The Storyblok Client
-import Storyblok from "../lib/storyblok"
- 
-export default function Home({story}: Props) {
+const StyledImage = styled(Image)`
 
-  console.log(story)
+`
+
+const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Super Effect</title>
+        <meta name="Starter" content="Next js typescript styled-components storyblok starter" />
+        <link rel="icon" href="/favicon.ico"/>
       </Head>
- 
-      <header>
-        <Title>
-          { story ? story.name : 'My Site' }
-        </Title>
-      </header>
- 
-      <main>
-      <DynamicComponent blok={story.content} />
-      </main>
+
+      <ContentWrapper>
+        <LogoWrapper>
+          <StyledImage src={Logo} />
+        </LogoWrapper>
+      </ContentWrapper>
     </div>
   )
 }
- 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  // the slug of the story
-  let slug = "home"
-  // the storyblok params
-  let params: StoriesParams = {
-    version: "draft", // or 'published'
-  }
- 
-  // checks if Next.js is in preview mode
-  if (context.preview) {
-    // loads the draft version
-    params.version = "draft"
-    // appends the cache version to get the latest content
-    params.cv = Date.now()
-  }
- 
-  // loads the story from the Storyblok API
-  let { data } = await Storyblok.get(`cdn/stories/${slug}`, params)
- 
-  // return the story from Storyblok and whether preview mode is active
-  return {
-    props: {
-      story: data ? data.story : false,
-      preview: context.preview || false
-    },
-    revalidate: 10, 
-  }
-}
+
+export default Home
