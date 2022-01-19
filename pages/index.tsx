@@ -17,10 +17,6 @@ const LogoWrapper = styled.div`
   height: auto;
 `
 
-const StyledImage = styled(Image)`
-
-`
-
 const Home: NextPage = () => {
   return (
     <div>
@@ -29,10 +25,9 @@ const Home: NextPage = () => {
         <meta name="Starter" content="Next js typescript styled-components storyblok starter" />
         <link rel="icon" href="/favicon.ico"/>
       </Head>
-
       <ContentWrapper>
         <LogoWrapper>
-          <StyledImage src={Logo} />
+          <Image src={Logo} />
         </LogoWrapper>
       </ContentWrapper>
     </div>

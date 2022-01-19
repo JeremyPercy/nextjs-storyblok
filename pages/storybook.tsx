@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 // The Storyblok Client
 import Storyblok from "../lib/storyblok"
+import Story from '../components/Story';
 
 const Title = styled.h1`
 font-size: 200px;
@@ -16,29 +17,27 @@ interface Props {
   story: StoryData
 }
 
-export default function StoryblokComponent({story}: Props) {
-
-  console.log(story)
+export default function StoryblokComponent({ story }: Props) {
   return (
     <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
- 
+
       <header>
         <Title>
-          { story ? story.name : 'My Site' }
+          {story ? story.name : 'My Site'}
         </Title>
       </header>
- 
+
       <main>
-      <DynamicComponent blok={story.content} />
+        <Story story={story} />
       </main>
     </div>
   )
 }
- 
+
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   // the slug of the story
   let slug = "home"
@@ -46,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   let params: StoriesParams = {
     version: "draft", // or 'published'
   }
- 
+
   // checks if Next.js is in preview mode
   if (context.preview) {
     // loads the draft version
@@ -54,16 +53,16 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     // appends the cache version to get the latest content
     params.cv = Date.now()
   }
- 
+
   // loads the story from the Storyblok API
   let { data } = await Storyblok.get(`cdn/stories/${slug}`, params)
- 
+
   // return the story from Storyblok and whether preview mode is active
   return {
     props: {
       story: data ? data.story : false,
       preview: context.preview || false
     },
-    revalidate: 10, 
+    revalidate: 10,
   }
 }
