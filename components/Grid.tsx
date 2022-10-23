@@ -1,15 +1,15 @@
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react'
 import React from 'react'
 import { GridBlockType } from '../types/storyblock'
-import DynamicComponent from './DynamicComponent'
  
 interface Props {
-  blocks: GridBlockType
+  blok: GridBlockType
 }
-const Grid = ({ blocks }: Props) => {
+const Grid = ({ blok }: Props) => {
   return (
-    <div className="grid">
-      {blocks.blocks.map((block) =>
-        (<DynamicComponent block={block} key={block._uid}/>)
+    <div {...storyblokEditable(blok)}>
+      {blok.columns.map((blok) =>
+        (<StoryblokComponent blok={blok} key={blok._uid}/>)
       )}
     </div>
   )

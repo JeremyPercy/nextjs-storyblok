@@ -1,12 +1,13 @@
+import { storyblokEditable } from '@storyblok/react'
 import React from 'react'
 import { FeatureBlockType } from '../types/storyblock'
  
 interface Props {
-  block: FeatureBlockType
+  blok: FeatureBlockType
 }
-const Feature = ({ block }: Props) => (
-    <div className="column feature">
-      {block.name}
+const Feature = ({ blok }: Props) => (
+    <div {...storyblokEditable(blok)}>
+      {blok.name}
     </div>
 )
  

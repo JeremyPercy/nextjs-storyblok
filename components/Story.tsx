@@ -1,21 +1,18 @@
-import { StoryData } from "storyblok-js-client";
-import { Blocks } from "../types/storyblock";
-import DynamicComponent from './DynamicComponent';
+import { StoryblokComponent, StoryData } from '@storyblok/react'
+import { Blocks } from '../types/storyblock'
 
 type Props = {
-  story: StoryData
+  blok: any
 }
 
-const Story = ({ story }: Props) => {
-  const { content } = story;
-
+const Story = ({ blok }: Props) => {
   return (
-    <>
-      {content.blocks?.map((block: Blocks) => (
-        <DynamicComponent key={block._uid} block={block} />
+    <div key={blok.uuid}>
+      {blok.body.map((block: Blocks) => (
+        <StoryblokComponent blok={block} key={block._uid}/>
       ))}
-    </>
-  );
+    </div>
+  )
 }
 
-export default Story;
+export default Story

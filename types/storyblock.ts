@@ -5,7 +5,7 @@ export type Blocks = GridBlockType | FeatureBlockType | TeaserBlockType
 export type GridBlockType = {
   _uid: string
   _editable?: string
-  blocks: Blocks[]
+  columns: Blocks[]
   component: 'grid'
 }
 

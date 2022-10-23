@@ -1,12 +1,13 @@
+import { storyblokEditable } from '@storyblok/react'
 import React from 'react'
 import { TeaserBlockType } from '../types/storyblock'
  
 interface Props {
-  block: TeaserBlockType
+  blok: TeaserBlockType
 }
-const Teaser = ({block}: Props) => {
+const Teaser = ({blok}: Props) => {
   return (
-    <h2>{block.headline}</h2>
+    <h2 {...storyblokEditable(blok)} key={blok._uid}>{blok.headline}</h2>
   )
 }
  

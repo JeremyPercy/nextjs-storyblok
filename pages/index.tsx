@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       </Head>
       <ContentWrapper>
         <LogoWrapper>
-          <Image src={Logo} />
+          <Image src={Logo} alt="logo"/>
         </LogoWrapper>
       </ContentWrapper>
     </div>

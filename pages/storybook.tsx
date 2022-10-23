@@ -1,13 +1,12 @@
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react';
-import DynamicComponent from '../components/DynamicComponent'
 import { StoriesParams, StoryData } from 'storyblok-js-client';
 import styled from 'styled-components';
 
 // The Storyblok Client
-import Storyblok from "../lib/storyblok"
 import Story from '../components/Story';
+import { getStoryblokApi } from '@storyblok/react';
 
 const Title = styled.h1`
 font-size: 200px;
@@ -32,7 +31,7 @@ export default function StoryblokComponent({ story }: Props) {
       </header>
 
       <main>
-        <Story story={story} />
+        <Story blok={story.content} />
       </main>
     </div>
   )
@@ -55,7 +54,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   }
 
   // loads the story from the Storyblok API
-  let { data } = await Storyblok.get(`cdn/stories/${slug}`, params)
+  const storyblokApi = getStoryblokApi()
+  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, params)
 
   // return the story from Storyblok and whether preview mode is active
   return {
