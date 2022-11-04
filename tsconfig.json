@@ -27,11 +27,12 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "incremental": true
-  },
-  "paths": {
-    "@data/*": ["data/*"],
-    "@components/*": ["components/*"]
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@data/*": ["data/*"],
+      "@components/*": ["components/*"]
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

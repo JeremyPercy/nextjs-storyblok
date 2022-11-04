@@ -1,13 +1,14 @@
-import type { AppProps } from 'next/app'
-import { theme } from '../components/theme'
-import React from 'react'
 import { apiPlugin, storyblokInit } from '@storyblok/react'
-import { GlobalStyle } from '../components/GlobalStyle'
+import type { AppProps } from 'next/app'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
+
 import Feature from '../components/Feature'
-import Teaser from '../components/Teaser'
-import Story from '../components/Story'
+import { GlobalStyle } from '../components/GlobalStyle'
 import Grid from '../components/Grid'
+import Story from '../components/Story'
+import Teaser from '../components/Teaser'
+import { theme } from '../components/theme'
 
 const components = {
   feature: Feature,
@@ -17,7 +18,7 @@ const components = {
 }
 
 storyblokInit({
-  accessToken: 'lrD0YbDO6lGnQC7IrfZwqwtt',
+  accessToken: 'YOUR_API_KEY',
   use: [apiPlugin],
   components,
 })
