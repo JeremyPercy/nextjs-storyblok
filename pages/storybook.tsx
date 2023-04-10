@@ -1,22 +1,26 @@
+import {
+  ISbStoriesParams,
+  ISbStoryData,
+  StoryblokComponent,
+  useStoryblokState,
+} from '@storyblok/react'
+import { getStoryblokApi } from '@storyblok/react'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react';
-import { StoriesParams, StoryData } from 'storyblok-js-client';
-import styled from 'styled-components';
-
-// The Storyblok Client
-import Story from '../components/Story';
-import { getStoryblokApi } from '@storyblok/react';
+import React from 'react'
+import styled from 'styled-components'
 
 const Title = styled.h1`
-font-size: 200px;
+  font-size: 200px;
 `
 
 interface Props {
-  story: StoryData
+  story: ISbStoryData
 }
 
-export default function StoryblokComponent({ story }: Props) {
+const Page = ({ story }: Props) => {
+  story = useStoryblokState(story)
+
   return (
     <div>
       <Head>
@@ -25,13 +29,11 @@ export default function StoryblokComponent({ story }: Props) {
       </Head>
 
       <header>
-        <Title>
-          {story ? story.name : 'My Site'}
-        </Title>
+        <Title>{story ? story.name : 'My Site'}</Title>
       </header>
 
       <main>
-        <Story blok={story.content} />
+        <StoryblokComponent blok={story.content} />
       </main>
     </div>
   )
@@ -39,16 +41,16 @@ export default function StoryblokComponent({ story }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   // the slug of the story
-  let slug = "home"
+  let slug = 'home'
   // the storyblok params
-  let params: StoriesParams = {
-    version: "draft", // or 'published'
+  let params: ISbStoriesParams = {
+    version: 'draft', // or 'published'
   }
 
   // checks if Next.js is in preview mode
   if (context.preview) {
     // loads the draft version
-    params.version = "draft"
+    params.version = 'draft'
     // appends the cache version to get the latest content
     params.cv = Date.now()
   }
@@ -61,8 +63,10 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   return {
     props: {
       story: data ? data.story : false,
-      preview: context.preview || false
+      preview: context.preview || false,
     },
     revalidate: 10,
   }
 }
+
+export default Page

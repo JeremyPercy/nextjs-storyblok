@@ -6,7 +6,6 @@ import { ThemeProvider } from 'styled-components'
 import Feature from '../components/Feature'
 import { GlobalStyle } from '../components/GlobalStyle'
 import Grid from '../components/Grid'
-import Story from '../components/Story'
 import Teaser from '../components/Teaser'
 import { theme } from '../components/theme'
 
@@ -14,7 +13,6 @@ const components = {
   feature: Feature,
   grid: Grid,
   teaser: Teaser,
-  page: Story,
 }
 
 storyblokInit({
