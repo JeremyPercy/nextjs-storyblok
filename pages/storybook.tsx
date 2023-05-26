@@ -15,7 +15,7 @@ const Title = styled.h1`
 `
 
 interface Props {
-  story: ISbStoryData
+  story: ISbStoryData | null
 }
 
 const Page = ({ story }: Props) => {
@@ -33,7 +33,7 @@ const Page = ({ story }: Props) => {
       </header>
 
       <main>
-        <StoryblokComponent blok={story.content} />
+        <StoryblokComponent blok={story?.content} />
       </main>
     </div>
   )
