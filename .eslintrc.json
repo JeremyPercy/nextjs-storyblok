@@ -1,6 +1,107 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "next",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:import/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": [
+    "react",
+    "unused-imports",
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort",
+    "@stylistic"
+  ],
   "rules": {
-    "no-console": "warn"
-  }
+    "@stylistic/indent": ["error", 2],
+    "@stylistic/quotes": ["error", "single"],
+    "@stylistic/semi": ["error", "never"],
+    "@stylistic/comma-style": ["error", "last"],
+    "@stylistic/no-floating-decimal": "error",
+    "no-console": "warn",
+    "react/display-name": "off",
+    "import/no-duplicates": ["error"],
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "import/no-anonymous-default-export": "off",
+    "@next/next/no-html-link-for-pages": ["error", "./pages"],
+    "jsx-a11y/alt-text": [2],
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "inline-type-imports"
+      }
+    ],
+    "if-newline": "off",
+    "import/no-webpack-loader-syntax": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      { "allow": ["arrowFunctions"] }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // Packages. `react` related packages come first
+              ["^react", "^next"],
+              // Packages. Things that start with a letter (or digit or underscore).
+              ["^@?\\w"],
+              // Internal Aliases
+              ["^(@/components|@/utils)(/.*|$)"],
+              // Our own Aliases
+              ["^\\/public"],
+              // Side effect imports.
+              ["^\\u0000"],
+              // Parent imports. Put `..` last.
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
+            ]
+          }
+        ],
+        "arrow-body-style": ["error", "as-needed"]
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "**/*.json",
+    "node_modules",
+    "public",
+    "tsconfig.tsbuildinfo",
+    "styles",
+    ".next",
+    "coverage",
+    "dist",
+    ".turbo",
+    ".eslintrc.js",
+    "next.config.js",
+    "**/.storybook/*.js",
+    "types/**.*"
+  ]
 }

@@ -1,14 +1,14 @@
-import { storyblokEditable } from '@storyblok/react'
 import React from 'react'
-import { FeatureBlockType } from '../types/storyblock'
- 
+
+import { storyblokEditable } from '@storyblok/react/rsc'
+
+import { type FeatureBlockType } from '../types/storyblock'
+
 interface Props {
-  blok: FeatureBlockType
+  blok: FeatureBlockType;
 }
 const Feature = ({ blok }: Props) => (
-    <div {...storyblokEditable(blok)}>
-      {blok.name}
-    </div>
+  <div {...storyblokEditable(blok)}>{blok.name}</div>
 )
- 
+
 export default Feature

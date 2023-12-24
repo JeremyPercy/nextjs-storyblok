@@ -1,14 +1,16 @@
-import { storyblokEditable } from '@storyblok/react'
 import React from 'react'
-import { TeaserBlockType } from '../types/storyblock'
- 
+
+import { storyblokEditable } from '@storyblok/react/rsc'
+
+import { type TeaserBlockType } from '../types/storyblock'
+
 interface Props {
-  blok: TeaserBlockType
+  blok: TeaserBlockType;
 }
-const Teaser = ({blok}: Props) => {
-  return (
-    <h2 {...storyblokEditable(blok)} key={blok._uid}>{blok.headline}</h2>
-  )
-}
- 
+const Teaser = ({ blok }: Props) => (
+  <h2 {...storyblokEditable(blok)} key={blok._uid}>
+    {blok.headline}
+  </h2>
+)
+
 export default Teaser

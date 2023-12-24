@@ -1,6 +1,18 @@
 This is a starter repository for Nextjs and Storyblok. Where everything is configured for you to start exploring Storblok features in Nextjs
 
+Updated for next.js 14 app folder!
+
+- Pre configured Eslint
+- Pre configured TS
+- Typescript
+- Tailwind
+- Husky with pre commmit hook
+- Storyblok provider
+- Utilities and default SB components
+
 ## Getting Started
+
+Add your storyblok API key in .env file, under NEXT_PUBLIC_SB_ACCESS_TOKEN
 
 First, run the development server:
 
@@ -12,7 +24,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Deploy on Vercel
 
