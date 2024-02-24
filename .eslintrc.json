@@ -22,7 +22,6 @@
     "@stylistic"
   ],
   "rules": {
-    "@stylistic/indent": ["error", 2],
     "@stylistic/quotes": ["error", "single"],
     "@stylistic/semi": ["error", "never"],
     "@stylistic/comma-style": ["error", "last"],
