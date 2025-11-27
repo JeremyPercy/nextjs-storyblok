@@ -6,50 +6,45 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "TIMING=1 eslint  \"**/*.tsx*\" \"**/*.js*\" \"**/*.ts*\" --fix",
+    "lint": "eslint \"**/*.tsx*\" \"**/*.js*\" \"**/*.ts*\" --fix",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install",
-    "precommit": "yarn typecheck && npx lint-staged"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "**/*.md": [
-      "prettier --write"
-    ]
+    "postinstall": "husky"
   },
   "dependencies": {
-    "@storyblok/react": "^3.0.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "next": "^14.0.4",
-    "prettier": "^3.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.3.3"
+    "@storyblok/react": "^5.4.19",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "next": "^16.0.5",
+    "prettier": "^3.7.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@stylistic/eslint-plugin": "^1.5.1",
-    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "autoprefixer": "^10.4.16",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "eslint-config-next": "^14.0.4",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "husky": "^8.0.3",
-    "postcss": "^8.4.32",
-    "tailwind-merge": "^2.2.0",
-    "tailwindcss": "^3.4.0"
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/compat": "^1.2.4",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/parser": "^8.48.0",
+    "autoprefixer": "^10.4.22",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint-config-next": "^16.0.5",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-testing-library": "^7.1.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17"
   }
 }

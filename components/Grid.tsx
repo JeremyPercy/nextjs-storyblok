@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc'
+import {
+  storyblokEditable,
+  StoryblokServerComponent,
+} from "@storyblok/react/rsc";
 
-import { type GridBlockType } from '../types/storyblock'
+import { type GridBlockType } from "../types/storyblock";
 
 interface Props {
   blok: GridBlockType;
@@ -10,9 +13,9 @@ interface Props {
 const Grid = ({ blok }: Props) => (
   <div {...storyblokEditable(blok)}>
     {blok.columns.map((blok) => (
-      <StoryblokComponent blok={blok} key={blok._uid} />
+      <StoryblokServerComponent blok={blok} key={blok._uid} />
     ))}
   </div>
-)
+);
 
-export default Grid
+export default Grid;
